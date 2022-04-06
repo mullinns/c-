@@ -1,5 +1,6 @@
 1)
 
+
 #include <iostream>
 
 int main(){
@@ -33,33 +34,32 @@ int main(){
 }
 
 
+
 2)
 
 
 
 #include <iostream>
-#include <windows.h>
+#include "windows.h"
+
 using namespace std;
 
-
-int main() {
-    int n;
+int main(){
+    cout << "Write n \n";
+    int n = 0;
     cin >> n;
-    while (n) {
-        cout << n << endl;
-        n--;
+    while (n>0)
+    {
+        cout << n << " ";
         Sleep(1000);
+        n--;
     }
 }
 
 
+
 3)
 
-
-
-#include <iostream>
-#include <string>
-using namespace std;
 
 
 int main() {
