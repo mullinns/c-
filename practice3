@@ -1,0 +1,122 @@
+1)
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <ctime>
+#include <string>
+ 
+using namespace std;
+ 
+ 
+int main() {
+ 
+	time_t now = time(0); 
+ 
+	string date_bd;
+	cin >> date_bd; // format is dd.mm.yyyy
+	int day = stoi(date_bd.substr(0, 2)), month = stoi(date_bd.substr(3, 4)), year = stoi(date_bd.substr(6, 9));
+ 
+	struct tm timeinfo = { 0 };
+	timeinfo.tm_year = year - 1900;         
+	timeinfo.tm_mon = month - 1;           
+	timeinfo.tm_mday = day;                   
+ 
+	time_t btime = mktime(&timeinfo);
+ 
+	int now_days = now / 86400;
+	int btime_days = btime / 86400;
+ 
+	cout << "Your age in days is: " << now_days - btime_days;
+	system("pause");
+	return 0;
+ 
+}
+
+
+
+2)
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <ctime>
+#include <string>
+ 
+using namespace std;
+ 
+double calculator(double a, double b, char oper) {
+	switch (oper) {
+	case('+'):
+		return a + b;
+	case('-'):
+		return a - b;
+	case('*'):
+		return a * b;
+	case('/'):
+		double result;
+		try {
+			if (b == 0) {
+				throw runtime_error("divide by Zero");
+			}
+			else {
+				result = a / b;
+			}
+			return result;
+		}
+		catch (runtime_error& ex) {
+			cout << "Exception occurred: " << endl << ex.what();
+			return -1;
+		}
+	default:
+		cout << "Operation didn't find";
+		return -1;
+	}
+}
+ 
+ 
+int main() {
+	double a, b;
+	char operation;
+	cin.exceptions(cin.failbit);
+	try {
+		cout << "enter a";
+		cin >> a;
+	}
+	catch (const exception& ex)
+	{
+		cout << "Error: Incorrect digit!" << endl;
+		cin.clear();
+		cin.ignore(10, '\n');
+		return 0;
+	}
+	try {
+		cout << "enter b";
+		cin >> b;
+	}
+	catch (const exception& ex)
+	{
+		cout << "Error: Incorrect digit!" << endl;
+		cout << ex.what() << endl;
+		cin.clear();
+		cin.ignore(10, '\n');
+		return 0;
+	}
+	try {
+		cout << "Enter operation";
+		cin >> operation;
+	}
+	catch (const exception& ex)
+	{
+		cout << "Error: Incorrect digit" << endl;
+		cout << ex.what() << endl;
+		cin.clear();
+		cin.ignore(10, '\n');
+		return 0;
+	}
+ 
+	cout << endl <<"Result is: " << calculator(a, b, operation);
+ 
+}
