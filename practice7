@@ -1,0 +1,108 @@
+Задание 1
+
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    ofstream fout("ourfile.txt"); 
+    fout << "123"; 
+    fout.close(); 
+    system("pause");
+    return 0;
+}
+
+
+Задание 2
+
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "rus");
+    string s;
+    ifstream file("c:\\\\1\\\\ourfile.txt");
+
+    for(file >> s; !file.eof(); file >> s)
+        cout << s << endl;
+    return 0;
+}
+
+
+Задание 3
+
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "rus");
+    string s;
+    ifstream file("c:\\\\1\\\\ourfile.txt");
+    int n = 10;
+    char* buffer = new char[n+1];
+    buffer[n]=0;
+    file.get(buffer,n);
+    cout << buffer;
+    delete [] buffer;
+    
+    // or read
+
+    char* buffer=new char[n+1]; buffer[n]=0;
+    file.read(buffer,n);
+    cout<<buffer;
+    delete [] buffer;
+}
+
+Задание 4
+
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "rus");
+    string s;
+    ifstream file("c:\\\\1\\\\ourfile.txt");
+    int n = 100;
+    char *buffer = new char[n + 1];
+    buffer[n] = 0;
+    file.get(buffer, n);
+    while (!file.eof()){
+    cout << buffer;
+    delete[] buffer;
+    }
+}
+
+Задание 5
+
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    ofstream fout("c:\\\\1\\\\ourfile.txt");
+    string s;
+    cin >> s;
+    fout << s;
+    fout.close();
+    system("pause");
+    return 0;
+}
+
+Задание 6
+
+#include <fstream>
+#include <iostream>
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "rus");
+    string s;
+    ifstream file("c:\\\\1\\\\ourfile.txt");
+    file.seekg(0,ios_base::end);
+    cout << "Размер файла (в байтах): " << file.tellg();
+    return 0;
+}
